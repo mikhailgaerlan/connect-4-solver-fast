@@ -4,7 +4,6 @@ from numba import njit
 def _get_column_order(width):
     return [(width // 2 + (1 - 2 * (i % 2)) * (i + 1) // 2) for i in range(width)]
 
-@njit
 def _calculate_bottom_mask(width, height):
     if width > 0:
         return _calculate_bottom_mask(width-1, height) | (np.uint64(1) << ((width - 1) * (height + 1)))
